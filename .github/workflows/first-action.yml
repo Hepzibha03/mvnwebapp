@@ -1,12 +1,28 @@
-/*
-name: First-Workflow
-on: workflow_dispatch
+#name: First-Workflow
+#on: workflow_dispatch
+#jobs:
+ # first-job:
+  #  runs-on: ubuntu_latest
+   # steps:
+    #  - name: Printing Greeting
+     #   run: echo "Hello World"
+      #- name: Printing Goodbye
+       # run: echo "Goodbye!!" 
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
 jobs:
-  first-job:
-    runs-on: ubuntu_latest
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Printing Greeting
-        run: echo "Hello World"
-      - name: Printing Goodbye
-        run: echo "Goodbye!!" 
-*/
+      - uses: actions/checkout@v4
+      - name: Run a one-line script
+        run: echo Hello, world!
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.

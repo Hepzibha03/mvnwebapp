@@ -9,7 +9,7 @@ jobs:
   first-job:
     runs-on: ubuntu_latest
     steps:
-      #- uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Printing Greeting
         run: echo "Hello World"
       - name: Printing Goodbye

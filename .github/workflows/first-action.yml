@@ -1,10 +1,12 @@
 name: CI
 on: 
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch: 
+     inputs:
+        environment:
+          description: "dynamic image tag"
+          required: true
+          default: "latest"
+          
 jobs:
   first-job:
     runs-on: ubuntu_latest
@@ -12,5 +14,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Printing Greeting
         run: echo Hello World
-      - name: Printing Goodbye
-        run: echo Goodbye!!
+      - name: Image tagging
+        run: |
+            IMAGE_TAG ="${{ github.event.inouts.environment }}"
+            sed -i "s/^IMAGE_TAG=.*/IMAGE_TAG=\"$IMAGE_TAG\"/" bash.sh
+            

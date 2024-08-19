@@ -17,5 +17,6 @@ jobs:
       - name: Image tagging
         run: |
             IMAGE_TAG ="${{ github.event.inouts.environment }}"
-            sed -i "s/^IMAGE_TAG=.*/IMAGE_TAG=\"$IMAGE_TAG\"/" bash.sh
+            sed -i "s/^IMAGE_TAG=.*/IMAGE_TAG=\"$IMAGE_TAG\"/" script.sh
+            bash script.sh
             

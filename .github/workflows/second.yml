@@ -2,7 +2,7 @@
 name: Scheduled Netlify site build
 on:
   workflow_dispatch:
-permissions: {} # none
+  
 jobs:
   build:
     runs-on: ubuntu-latest

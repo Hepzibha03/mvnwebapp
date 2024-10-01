@@ -1,17 +1,12 @@
 name: CI
 on: 
-  workflow_dispatch: 
-     inputs:
-        environment:
-          description: "dynamic image tag"
-          required: true
-          default: "latest"
+  workflow_dispatch:
           
 jobs:
   first-job:
     runs-on: ubuntu_latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - name: Printing Greeting
         run: echo Hello World
       - name: Image tagging
